@@ -1,0 +1,17 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+<div class="hero animated-rainbow-hover">
+  <h2>{{ metadata.description }}</h2>
+</div>
+{% set maxPosts = collections.posts.length | min(10) %}
+{# <h3>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h3> #}
+
+{% set postslist = collections.posts | head(-10) %}
+{% set postslistCounter = collections.posts | length %}
+{% include "postslist.njk" %}
+
+<p>More articles can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>

@@ -1,0 +1,23 @@
+---
+title: All Tags
+permalink: /tags/
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Tags
+  order: 2
+---
+<h1>Tags</h1>
+
+<div class="tags-container">
+{% for tag in collections.tagList %}
+  {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+  <a href="{{ tagUrl | url }}" class="post-tag post-tag-xl animated-rainbow-hover">{{ tag }}</a>
+{% endfor %}
+</div>
+
+{% set maxPosts = collections.posts.length | min(5) %}
+<h2>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h3>
+
+{% set postslist = collections.posts | head(-5) %}
+{% set postslistCounter = collections.posts | length %}
+{% include "postslist.njk" %}
