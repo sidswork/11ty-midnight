@@ -31,6 +31,10 @@ module.exports = function (eleventyConfig) {
     return new URL(url, base).href;
   });
 
+  eleventyConfig.addFilter("currentYear", () => {
+    return new Date().getFullYear();
+  });
+
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
     if (!Array.isArray(array) || array.length === 0) {
