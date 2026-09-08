@@ -3,16 +3,6 @@
   "url": "https://example.com/",
   "language": "en",
   "description": "Minimalist dark mode blog starter template for 11ty",
-  "feed": {
-    "subtitle": "Minimalist dark mode blog starter template for 11ty",
-    "filename": "feed.xml",
-    "path": "/feed/feed.xml",
-    "id": "https://example.com/"
-  },
-  "jsonfeed": {
-    "path": "/feed/feed.json",
-    "url": "https://example.com/feed/feed.json"
-  },
   "author": {
     "name": "Your Name Here",
     "email": "youremailaddress@example.com",

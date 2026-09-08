@@ -1,6 +1,5 @@
 const { DateTime } = require("luxon");
 const fs = require("fs");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
@@ -8,7 +7,6 @@ const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function (eleventyConfig) {
   // Add plugins
-  eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
 
@@ -27,6 +25,14 @@ module.exports = function (eleventyConfig) {
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
+  });
+
+  eleventyConfig.addFilter("absoluteUrl", (url, base) => {
+    return new URL(url, base).href;
+  });
+
+  eleventyConfig.addFilter("currentYear", () => {
+    return new Date().getFullYear();
   });
 
   // Get the first `n` elements of a collection.
