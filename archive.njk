@@ -1,9 +1,20 @@
 ---
 layout: layouts/home.njk
-permalink: /posts/
+pagination: { data: collections.posts, size: 10, alias: paginatedPosts, reverse: true }
+permalink: /posts/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}
 ---
 
 <h1>Archive</h1>
 
-{% set postslist = collections.posts %}
+{% set postslist = paginatedPosts %}
 {% include "postslist.njk" %}
+
+<nav class="pagination" aria-label="Archive pages">
+	{% if pagination.href.previous %}
+		<a href="{{ pagination.href.previous | url }}" rel="prev">Newer posts</a>
+	{% endif %}
+	<span>Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</span>
+	{% if pagination.href.next %}
+		<a href="{{ pagination.href.next | url }}" rel="next">Older posts</a>
+	{% endif %}
+</nav>

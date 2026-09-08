@@ -11,7 +11,7 @@ eleventyNavigation:
 <div class="tags-container">
 {% for tag in collections.tagList %}
   {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-  <a href="{{ tagUrl | url }}" class="post-tag post-tag-xl animated-rainbow-hover">{{ tag }}</a>
+  <a href="{{ tagUrl | url }}" class="post-tag post-tag-xl animated-rainbow-hover" aria-label="{{ tag }} ({{ collections[tag] | length }} posts)">{{ tag }} <span class="tag-count">{{ collections[tag] | length }}</span></a>
 {% endfor %}
 </div>
 

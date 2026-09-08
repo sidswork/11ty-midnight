@@ -1,7 +1,7 @@
 ---
 title: Features
 description: Code highlight and JSFiddle for developers
-date: 2021-08-06
+date: 2026-08-06
 tags: guide
 layout: layouts/post.njk
 ---
