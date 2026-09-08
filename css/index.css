@@ -21,11 +21,19 @@
 html,
 body {
   padding: 0;
-  margin: auto;
-  max-width: 50em;
+  margin: 0;
+  min-height: 100%;
   font-family: -apple-system, system-ui, sans-serif;
   color: var(--white);
   background-color: var(--almostblack);
+}
+
+body > header,
+body > main,
+body > footer {
+  width: min(100% - 2rem, 50em);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1,
@@ -60,6 +68,57 @@ a[href]:hover {
 
 main {
   padding: 1rem;
+}
+
+img,
+iframe {
+  max-width: 100%;
+}
+
+iframe.jsfiddle {
+  display: block;
+  border: 0;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--yellowgreen);
+  outline-offset: 3px;
+}
+
+@media (max-width: 40em) {
+  body > header,
+  body > main,
+  body > footer {
+    width: 100%;
+  }
+
+  .home,
+  .nav {
+    float: none;
+  }
+
+  .home {
+    margin-bottom: 0.5rem;
+  }
+
+  .nav {
+    margin: 0 1rem 1rem;
+  }
+
+  .nav-item {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 main :first-child {
   margin-top: 0;
@@ -119,7 +178,7 @@ pre {
   border-radius: 5px;
 }
 code {
-  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 blockquote {

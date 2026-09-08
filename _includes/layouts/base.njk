@@ -1,15 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ metadata.language }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or "Home" }}</title>
+    <title>{{ title or metadata.title }}</title>
     <link rel="shortcut icon" type="image/jpg" href="/img/favicon.ico"/>
     <meta name="description" content="{{ description or metadata.description }}">
+    {% set pageTitle = title or metadata.title %}
+    {% set pageDescription = description or metadata.description %}
+    {% set canonicalUrl = page.url | url | absoluteUrl(metadata.url) %}
+    <link rel="canonical" href="{{ canonicalUrl }}">
+    <meta property="og:title" content="{{ pageTitle }}">
+    <meta property="og:description" content="{{ pageDescription }}">
+    <meta property="og:url" content="{{ canonicalUrl }}">
+    <meta property="og:type" content="{% if templateClass == 'tmpl-post' %}article{% else %}website{% endif %}">
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
-    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
-    <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     {# <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
     <script>
@@ -24,11 +30,13 @@
     <header>
       <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
       {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+      <nav aria-label="Primary">
       <ul class="nav">
       {%- for entry in collections.all | eleventyNavigation %}
-        <li class="nav-item {% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
+        <li class="nav-item {% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
       {%- endfor %}
       </ul>
+      </nav>
     </header>
 
     <main {% if templateClass %} class="{{ templateClass }}"{% endif %}>
@@ -38,7 +46,7 @@
     <footer>
       <div>{{ metadata.title}}</div>
       <div class="footer-text">
-        © 2021 {{ metadata.title }}, All rights reserved
+        © {{ "" | currentYear }} {{ metadata.title }}, All rights reserved
       </div>
                     
     <a href="https://www.netlify.com">
