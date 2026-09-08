@@ -67,6 +67,8 @@ DEBUG=* npx eleventy
 
 - `about/index.md` shows how to add a content page.
 - `posts/` has the blog posts but really they can live in any directory. They need only the `post` tag to be added to this collection.
+- Posts support `description`, optional `updated`, and optional `image` front matter. `updated` is used in post metadata and the sitemap.
+- The archive is paginated at `/posts/`, `/posts/2/`, and so on.
 - Add the `nav` tag to add a template to the top level site navigation. For example, this is in use on `index.njk` and `about/index.md`.
 - Content can be any template format (blog posts needn’t be markdown, for example). Configure your supported templates in `.eleventy.js` -> `templateFormats`.
   - Because `css` and `png` are listed in `templateFormats` but are not supported template types, any files with these extensions will be copied without modification to the output (while keeping the same directory structure).
@@ -75,6 +77,19 @@ DEBUG=* npx eleventy
   - `_includes/layouts/home.njk`: the home page template (wrapped into `base.njk`)
   - `_includes/layouts/post.njk`: the blog post template (wrapped into `base.njk`)
 - `_includes/postlist.njk` is a Nunjucks include and is a reusable component used to display a list of all the posts. `index.njk` has an example of how to use it.
+- Custom filters and collections live in `_config/filters.js`, keeping `.eleventy.js` focused on site wiring.
+- The tags page displays post counts for each tag.
+- The stylesheet includes light-mode tokens, keyboard focus states, and reduced-motion support.
+
+### Validation
+
+Run the complete local validation suite before deploying:
+
+```
+npm run validate
+```
+
+This builds the site, checks generated pages for required metadata and navigation, and runs the npm security audit.
 
 ## Shortcodes
 

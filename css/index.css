@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
 /* Colors */
 :root {
+  color-scheme: dark;
   --lightgray: #e0e0e0;
   --gray: #c0c0c0;
   --darkgray: #333;
@@ -93,16 +94,20 @@ a:focus-visible {
   }
 
   .home,
-  .nav {
+  header nav {
     float: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .home {
+    padding-left: 0;
+    padding-right: 0;
     margin-bottom: 0.5rem;
   }
 
   .nav {
-    margin: 0 1rem 1rem;
+    margin: 0 0 1rem;
   }
 
   .nav-item {
@@ -280,6 +285,20 @@ blockquote {
   font-size: 0.8125em; /* 13px /16 */
   color: var(--lightgray);
 }
+.postlist-reading-time,
+.post-meta {
+  color: var(--lightgray);
+  font-size: 0.8125em;
+}
+.postlist-reading-time {
+  margin-left: 0.75em;
+}
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  margin-bottom: 1.5em;
+}
 .postlist-date {
   word-spacing: -0.5px;
 }
@@ -321,7 +340,7 @@ a.postlist-link:hover {
 }
 
 .post-tag-xl {
-  font-size: 1.25em; /* 12px /16 */
+  font-size: 1.1em;
   padding: 0.66em 0.66em;
   margin-left: 0;
   margin-right: 0.5em;
@@ -329,6 +348,12 @@ a.postlist-link:hover {
   border-radius: 0.5em; /* 3px /12 */
   line-height: 1.8;
   box-shadow: black 5px 5px 2px;
+}
+
+.tag-count {
+  margin-left: 0.4em;
+  opacity: 0.7;
+  font-size: 0.8em;
 }
 
 .tag-name-title {
@@ -408,6 +433,69 @@ p > code {
 
 .post-footer > div > a:hover {
   color: var(--white);
+}
+
+.post-footer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.post-footer > div > span {
+  color: var(--lightgray);
+  font-size: 0.8125em;
+}
+
+.pagination {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 1em 0 3em;
+}
+
+.pagination span {
+  color: var(--lightgray);
+  font-size: 0.875em;
+}
+
+.search-form {
+  display: grid;
+  gap: 0.5em;
+  margin: 1.5em 0;
+}
+
+.search-form input {
+  width: 100%;
+  padding: 0.75em;
+  border: 2px solid var(--gray);
+  border-radius: 4px;
+  color: var(--white);
+  background: var(--darkgray);
+  caret-color: var(--yellowgreen);
+  color-scheme: dark;
+  font: inherit;
+}
+
+.search-form input::placeholder {
+  color: var(--lightgray);
+  opacity: 1;
+}
+
+.search-status {
+  color: var(--lightgray);
+}
+
+.search-results {
+  padding-left: 1.25em;
+}
+
+.search-results li {
+  margin: 1.25em 0;
+}
+
+.search-results p {
+  margin: 0.35em 0 0;
 }
 
 ::-moz-selection {

@@ -1,3 +1,10 @@
 [build]
   publish = "_site"
-  command = "DEBUG=* eleventy"
+  command = "eleventy"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.netlify.com data:; frame-src https://jsfiddle.net https://www.jsfiddle.net; object-src 'none'; base-uri 'self'"

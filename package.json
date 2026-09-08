@@ -4,6 +4,9 @@
   "description": "Minimalist dark mode starter template for 11ty",
   "scripts": {
     "build": "eleventy",
+    "validate:site": "npm run build && node scripts/validate-site.js",
+    "audit": "npm audit --audit-level=high",
+    "validate": "npm run validate:site && npm run audit",
     "watch": "eleventy --watch",
     "serve": "eleventy --serve",
     "start": "eleventy --serve",

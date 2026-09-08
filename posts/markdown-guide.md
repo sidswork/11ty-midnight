@@ -1,7 +1,7 @@
 ---
 title: Markdown Guide
 description: Sample markdown syntax
-date: 2021-08-05
+date: 2026-08-05
 tags: guide
 layout: layouts/post.njk
 ---
